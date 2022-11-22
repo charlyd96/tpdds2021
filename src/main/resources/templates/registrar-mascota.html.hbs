@@ -1,0 +1,84 @@
+{{# partial "titulo"}}
+    <title>Registrar mascota</title>
+{{/partial}}
+
+{{# partial "contenido"}}
+<section class="m-4">
+    <h1>Registrar mascota</h1>
+    <p class="text-secondary">Para poder registrar a tu mascota en la plataforma, vamos a pedirte algunos datos sobre ella
+    </p>
+
+    <hr class="hr-bold">
+
+
+
+    <form action="/mascotas" method="POST" >
+        <h2 class="mt-2 text-dark">Datos sobre la mascota</h2>
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="mascotaNombre">Nombre</label>
+                <input type="text" class="form-control" required name="mascotaNombre" id="mascotaNombre">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="mascotaNacimiento">Fecha de nacimiento</label>
+                <input type="date" class="form-control" required id="mascotaNacimiento" name="mascotaNacimiento">
+            </div>
+        </div>
+
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="mascotaApodo"> Apodo </label>
+                <input type="text" class="form-control" id="mascotaApodo" name="mascotaApodo">
+            </div>
+        </div>
+        <div class="form-row mt-4" >
+        <div class="col-4">
+            <label for="mascotaDescripcion">Descripción física</label>
+            <textarea type="text" class="form-control" id="mascotaDescripcion" required name="mascotaDescripcion"placeholder="Ej: con manchas, etc."> </textarea>
+        </div>
+        </div>
+
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-1">
+                <label for="mascotaSexo">Sexo</label>
+                <div>
+                    <select id="mascotaSexo" required name="mascotaSexo">
+                        <option value="0">Masculino</option>
+                        <option value="1">Femenino</option>
+                        <option value="2">Otro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-1">
+                <label for="mascotaTamanio">Tamaño</label>
+                <div>
+                    <select id="mascotaTamanio" required name="mascotaTamanio">
+                        <option value="0">Pequeño</option>
+                        <option value="1">Mediano</option>
+                        <option value="2">Grande</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-1">
+                <label for="mascotaTipo" required>Tipo</label>
+                <div>
+                    <select id="mascotaTipo" name="mascotaTipo">
+                        <option value="0">Gato</option>
+                        <option value="1">Perro</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <input style="visibility: hidden" type="text" class="form-control" required name="caracteristicas" id="caracteristicas" value="{{caracteristicas}}" >
+
+
+
+        <div>
+            <button type="submit" class="btn btn-dark mt-5" style="margin-left: 7rem;">Crear mascota</button>
+        </div>
+    </form>
+</section>
+{{/partial}}
+
+{{> layout.html.hbs }}

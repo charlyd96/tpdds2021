@@ -1,0 +1,76 @@
+{{# partial "titulo"}}
+    <title>Patitas!</title>
+{{/partial}}
+
+
+{{# partial "contenido"}}
+<div style="background-color: white;">
+  <img src="/banner.jpg" class=" mx-auto d-block banner">
+</div>
+<h1 class="text-center mt-4">Patitas!</h1>
+<p class="text-center mt-2 text-secondary">Cuidando a los más desprotegidos</p>
+
+<div class="row mt-5">
+    <div class="col-xl-2 col-sm-2 " ></div>
+    <div class="col-xl-3 col-sm-3 " >
+        <a href="/registrar-mascota" class="btn btn-secondary mt-5 mx-auto btn-home">Registrá a tu mascota</a>
+    </div>
+    <div class="col-xl-2 col-sm-2 " ></div>
+    <div class="col-xl-3 col-sm-3 ">
+        <a href="mascotas-encontradas"  class="btn btn-secondary mt-5 mx-auto btn-home">Publicar una mascota perdida</a>
+    </div>
+</div>
+
+<hr class="m-4 hr-bold">
+
+<h2 class="text-center m-4">Mascotas de la comunidad mascotera</h2>
+
+
+<div class="row row-cols-1 row-cols-md-5 g-4">
+
+    <div class="col"></div>
+    {{#each mascotasRegistradas }}
+    <div class="col">
+      <div class="card h-100">
+        <img width="300" height="300" src="{{this.primeraFoto}}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{this.mascota.nombre}}</h5>
+          <p class="card-text"> {{this.mascota.descripcionFisica}}</p>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+<div class="d-flex justify-content-center">
+  <button type="button" class="btn btn-secondary mt-5 mx-auto btn-lg justify-content-center text-center">Ver más</button>
+</div>
+
+  <hr class="hr-bold">
+
+<h2 class="text-center mt-4">Mascotas perdidas</h2>
+
+<div class="row row-cols-1 row-cols-md-5 g-4">
+
+    <div class="col"></div>
+{{#each mascotasPerdidas }}
+    <div class="col">
+        <div class="card h-100">
+            <a href="mascotas-encontradas/{{this.id}}"><img width="300" height="300" src="{{this.primeraFoto}}" class="card-img-top"></a>
+            <div class="card-body">
+                <p class="card-text"> {{this.mascota.descripcionFisica}}</p>
+            </div>
+        </div>
+    </div>
+{{else}}
+<p class="text-center">No hay mascotas perdidas para mostrar</p>
+{{/each}}
+</div>
+
+<div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-secondary mt-5 mx-auto btn-lg justify-content-center text-center">Ver más</button>
+</div>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

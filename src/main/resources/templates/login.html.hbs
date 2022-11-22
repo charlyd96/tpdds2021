@@ -1,0 +1,41 @@
+{{# partial "titulo"}}
+    <title>Iniciar sesión</title>
+{{/partial}}
+
+{{# partial "contenido"}}
+    <h1 class="ml-4 mt-4">Iniciar sesión</h1>
+
+    <hr class="hr-bold">
+    <form class="ml-4" action="/login" method="POST">
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="usuario">Usuario</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ej: lulu123">
+            </div>
+        </div>
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="usuarioContrasenia">Contraseña</label>
+                <input type="password" class="form-control" id="usuarioContrasenia" name="usuarioContrasenia">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-secondary mb-4 ml-5">Iniciar sesión</button>
+        <div>
+            <p>  Si aún no estas registrado, <a href= "/crear-usuario"> <u> hace click aquí</u> </a> para registrate. </p>
+        </div>
+
+
+
+        {{#if fallaInicioSesion}}
+        <p class="text-danger" > Error al iniciar sesión, verifiqué su usuario y/o contraseña. </p>
+        {{/if}}
+
+        {{#if desdeRegistrarMascota}}
+            <p class="text-danger" > Antes de registrar una mascota, debes iniciar sesión.</p>
+        {{/if}}
+
+
+    </form>
+{{/partial}}
+
+{{> layout.html.hbs }}

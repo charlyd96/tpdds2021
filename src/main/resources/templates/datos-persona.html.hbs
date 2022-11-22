@@ -1,0 +1,45 @@
+<div class="form-row mt-4" >
+    <div class="form-group col-md-2">
+        <label for="nombreYApellido">Nombre y apellido</label>
+        <input type="text" class="form-control"  required id="nombreYApellido" name="nombreYApellido">
+    </div>
+    <div class="form-group col-md-2">
+        <label for="fechaNacimiento">Fecha de nacimiento</label>
+        <input type="date" class="form-control" required id="fechaNacimiento" name="fechaNacimiento">
+    </div>
+
+</div>
+<div class="form-row mt-4" >
+    <div class="form-group col-md-2">
+        <label for="usuarioTipoIdentificacion">Tipo</label>
+        <div>
+            <select id="usuarioTipoIdentificacion" required name="usuarioTipoIdentificacion">
+                <option value="0">DNI</option>
+                <option value="1">LC</option>
+                <option value="2">LE</option>
+                <option value="3">CI</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="numeroDeIdentificacion">Nº de identificación sin comas ni puntos.</label>
+        <input type="number" required class="form-control" id="numeroDeIdentificacion" name="numeroDeIdentificacion" placeholder="Ej: 11222333">
+    </div>
+</div>
+<div class="form-row mt-4" >
+    <div class="form-group col-md-2">
+        <label>Dirección</label>
+        <input type="text" class="form-control" required id="inputDireccion" name="direccion">
+    </div>
+    <div class="form-group col-md-2">
+        <label>Teléfono</label>
+        <input type="number" class="form-control"  id="inputTelefono" name="telefono">
+    </div>
+</div>
+
+<div class="form-row mt-4" >
+    <div class="form-group col-md-2">
+        <label>Email</label>
+        <input type="email" class="form-control"  id="inputEmail" name="email">
+    </div>
+</div>

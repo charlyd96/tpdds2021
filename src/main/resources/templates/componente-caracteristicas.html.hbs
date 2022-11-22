@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead class="table-secondary">
+                <tr class="text-center">
+                    <th scope="col">Seleccionar</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Respuesta</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each caracteristicaConValores}}
+                <tr scope="row" class="text-center">
+                    <td>
+                        <div class="form-check">
+                          <input class="form-check-input"  type="checkbox" id="checked" value="{{this.id}}" name = "selected">
+                        </div>
+                    </td>
+
+                    <td>{{this.descripcion}}</td>
+                    <td>
+                        <div>
+                            <select id="{{this.id}}" name="caracteristica-{{this.id}}">
+                            {{#each this.valoresPosibles}}
+                                <option value="{{this}}" >{{this}}</option>
+                            {{/each}}
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+
+            {{#each caracteristicaLibre}}
+                <tr scope="row" class="text-center">
+                    <td>
+                        <label for="caracteristicaId"></label>
+                        <div class="form-check">
+                            <input class="form-check-input"  type="checkbox" id="checked" value="{{this.id}}" name = "selected">
+                        </div>
+                    </td>
+
+                    <td>{{this.descripcion}}</td>
+                    <td>
+                        <div>
+                            <input type="text" class="form-control" id="{{this.id}}" name="caracteristica-{{this.id}}" placeholder="Contanos un poco...">
+                        </div>
+                    </td>
+                </tr>
+            {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+</div>

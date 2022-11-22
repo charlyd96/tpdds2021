@@ -1,0 +1,46 @@
+{{# partial "titulo"}}
+    <title>Registrar mascota</title>
+{{/partial}}
+
+{{# partial "contenido"}}
+<section class="m-4">
+    <h1>Registrar mascota</h1>
+    <p class="text-secondary">Seleccioná las características de tu mascota
+    </p>
+
+    <hr class="hr-bold">
+    <div class="row justify-content-center">
+    <div class="col-8">
+        <form action="/registrar-mascota" method="GET" class="row justify-content-center mb-4" >
+            <input type="text" name="search" class="mr-5"> </input>
+            <input class="btn btn-secondary" type="submit" value="Buscar"> </input>
+        </form>
+        <form action="/registrar-mascota/datos" method="POST">
+
+            {{> componente-caracteristicas.html.hbs }}
+
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-dark mt-2" >Siguiente</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</section>
+<script>
+    function filter(text) {
+        console.log(tieneChapita);
+        if (tieneChapita) {
+            console.log("mostrar con chapita");
+            document.querySelector("#conChapita").style.display="block";
+            document.querySelector("#sinChapita").style.display="none";
+            return;
+        }
+        console.log("mostrar sin chapita");
+        document.querySelector("#conChapita").style.display="none";
+        document.querySelector("#sinChapita").style.display="block";
+    }
+</script>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

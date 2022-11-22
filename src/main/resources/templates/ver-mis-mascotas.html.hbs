@@ -1,0 +1,38 @@
+{{# partial "titulo"}}
+    <title>Patitas!</title>
+{{/partial}}
+
+
+{{# partial "contenido"}}
+
+
+    <hr class="m-4 hr-bold">
+
+    <h2 class="text-center m-4">Mis Mascotas </h2>
+
+
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+
+        <div class="col"></div>
+        {{#each mascotas }}
+            <div class="col">
+                <div class="card h-100">
+                    <a href="mascotas/{{this.mascota.id}}"><img width="300" height="300" src="{{this.primeraFoto}}" class="card-img-top"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.mascota.nombre}}</h5>
+                        <p class="card-text"> {{this.mascota.descripcionFisica}}</p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+
+
+
+
+
+
+{{/partial}}
+
+{{> layout.html.hbs }}

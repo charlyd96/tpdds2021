@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>modelo.Ubicacion</class>
+        <class>modelo.Persona</class>
+        <class>modelo.TipoDocumento</class>
+        <class>notificaciones.Contacto</class>
+        <class>notificaciones.ContactoMail</class>
+        <class>notificaciones.ContactoSMS</class>
+        <class>usuario.Usuario</class>
+        <class>modelo.DuenioMascota</class>
+        <class>modelo.Mascota</class>
+        <class>caracteristica.Atributo</class>
+        <class>caracteristica.Caracteristica</class>
+        <class>caracteristica.CaracteristicaConValores</class>
+        <class>caracteristica.CaracteristicaLibre</class>
+        <class>adopcion.MascotaEnAdopcion</class>
+        <class>adopcion.RespuestaPreguntaAdopcion</class>
+        <class>adopcion.PreguntaAdopcion</class>
+        <class>adopcion.IntencionAdoptar</class>
+        <class>modelo.Asociacion</class>
+        <class>modelo.MascotaEncontrada</class>
+        <class>modelo.Publicacion</class>
+
+        <properties>
+            <property name="hibernate.archive.autodetection" value="class"/>
+
+
+<!--            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />-->
+<!--            <property name="hibernate.connection.url" value="jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_355df872d0dabaf?reconnect=true" />-->
+<!--            <property name="hibernate.connection.username" value="b29eb272ec6f99" />-->
+<!--            <property name="hibernate.connection.password" value="c462b7ab" />-->
+
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://tpdds-2021.mysql.database.azure.com/patitas" />
+            <property name="hibernate.connection.username" value="PatitasDevs" />
+            <property name="hibernate.connection.password" value="Pass.123" />
+
+
+<!--            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />-->
+<!--            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/patitas" />-->
+<!--            <property name="hibernate.connection.username" value="root" />-->
+<!--            <property name="hibernate.connection.password" value="123456" />-->
+
+<!--        <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>-->
+<!--        <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:app-db"/>-->
+<!--        <property name="hibernate.connection.username" value="sa"/>-->
+<!--        <property name="hibernate.connection.password" value=""/>-->
+<!--        <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>-->
+
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="use_sql_comments" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+
+    </persistence-unit>
+
+</persistence> 

@@ -1,0 +1,134 @@
+{{# partial "titulo"}}
+    <title>Publicar mascota</title>
+{{/partial}}
+
+{{# partial "contenido"}}
+    <section class="m-4">
+        <h1 class="mt-4">Publicar una mascota perdida</h1>
+        <p class="text-secondary">¿Encontraste un mascota perdida y querés buscar a su dueño? Publicala!</p>
+        
+        <hr class="hr-bold">
+        <h5 class="text-dark">¿La mascota que encontraste tiene chapita?</h5>
+        <div class="form-check">
+            <input  onclick="showForm(true)" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Sí, tiene chapita
+            </label>
+          </div>
+          <div class="form-check">
+            <input onclick="showForm(false)" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+            <label class="form-check-label" for="flexRadioDefault2">
+              No, no tiene chapita
+            </label>
+          </div>
+          <hr class="hr-bold">
+
+        <div  id="conChapita" style="display: none;" class="mb-5 animated fadeIn fast">
+            <h2 class="mt-2 text-dark">Completá los siguientes datos y luego ingresá el código de la chapita</h2>
+                <p class="text-secondary">Si la mascota tiene chapita, es porque su dueño ya la registró anteriormente en la plataforma.
+                    Le avisaremos que la encontraste para que puedan ponerse en contacto.</p> <br>
+
+            <form class="mt-4" method="POST" action="/mascotas-encontradas/reportar-mascota-con-chapita">
+                <h3 class="mt-3 text-dark">Datos sobre el rescatista</h3>
+
+                {{> datos-persona.html.hbs }}
+
+                <div class="form-row mt-4" >
+                    <div class="form-group col-md-2">
+                        <label for="codigoChapita">Código de la chapita</label>
+                        <input required type="text" class="form-control" id="codigoChapita" name="codigoChapita">
+                    </div>
+
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-dark mt-3">Informar mascota</button> 
+                </div>
+            </form>
+        </div>
+
+        <div id="sinChapita" style="display: none;" class="mb-5 animated fadeIn fast" >
+            <h2 class="mt-2 text-dark">Completá los siguientes datos</h2>
+            <p class="text-secondary">Si la mascota no tiene chapita, es porque no se encuentra registrada en el sistema. <br>Ingresando sus datos,
+                 y los tuyos de contacto, podrás crear una publicación para que su dueño la encuentre y se ponga en contacto con vos para recuperarla.</p> <br>
+
+            <form class="mt-4" method ="POST" action="/mascotas-encontradas/crear-publicacion" enctype="multipart/form-data">
+                <h3 class="mt-3 text-dark">Datos sobre el rescatista</h3>
+
+                {{> datos-persona.html.hbs }}
+                <hr class="hr-bold">
+
+                <h3 class="mt-2 text-dark">Datos de la mascota</h3>
+                <div class="form-row mt-4" >
+                    <div class="form-group col-md-2">
+                        <label>Lugar del rescate</label>
+                        <input type="text" name="lugarDeRescate" required class="form-control" id="inputDireccion" placeholder="Calle">
+                       
+                    </div>
+                </div>
+                <div class="form-row mt-4" >
+                    <div class="form-group col-md-2">
+                        <label for="inputPassword4">Tipo</label>  
+                        <label style="margin-left: 5rem;">Tamaño</label>
+                        <div>
+                            <select id="selectTipo" name="mascotaTipo" required>
+                                <option value="0">Gato</option>
+                                <option value="1">Perro</option>
+                            </select>
+                            <select id="selectTamanio" name="mascotaTamanio" class="ml-5" required >
+                                <option value="0">Chico</option>
+                                <option value="1">Mediano</option>
+                                <option value="2">Grande</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="fechaRescate">Fecha de rescate</label>
+                        <input required type="date"  class="form-control" id="fechaRescate" name="fechaDeRescate">
+                    </div>
+                </div>
+                <div class="form-row mt-4" >
+                    <div class="form-group col-md-4">
+                        <label for ="descripcion">Descripción</label>
+                        <textarea type="text-area" class="form-control" id="descripcion" name="mascotaDescripcion" required> </textarea>
+                    </div>
+                </div>
+
+                {{> carga-fotos.html.hbs }}
+
+                <div class="mt-5">
+                    <button type="submit" class="btn btn-dark mt-4 ">Crear publicación</button>
+                </div>
+            </form>
+
+
+        </div>
+
+        {{#if  mascotaNoExistenteDB}}
+            <p class="text-danger" > Verifica el codigo de la chapita, ya que no parece ser una mascota de la comunidad. </p>
+        {{/if}}
+
+        {{#if seDaAvisoADuenio}}
+            <p class="text-success" > Gracias por avisarnos, se estará poniendo en contacto el duenio camarada. </p>
+        {{/if}}
+    </section>
+</div>
+
+<script>
+    function showForm(tieneChapita) {
+        console.log(tieneChapita);
+        if (tieneChapita) {
+            console.log("mostrar con chapita");
+            document.querySelector("#conChapita").style.display="block";
+            document.querySelector("#sinChapita").style.display="none";
+            return;
+        }
+        console.log("mostrar sin chapita");
+        document.querySelector("#conChapita").style.display="none";
+        document.querySelector("#sinChapita").style.display="block";
+    }
+</script>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

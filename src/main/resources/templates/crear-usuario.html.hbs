@@ -1,0 +1,92 @@
+{{# partial "titulo"}}
+    <title>Registrate</title>
+{{/partial}}
+
+{{# partial "contenido"}}
+    <h1 class="ml-4 mt-4">Crear usuario</h1>
+    <p class="mt ml-4 text-secondary">Antes de regitrar a tu mascota, es necesario que crees una cuenta para operar en la plataforma</p>
+
+    <hr class="hr-bold">
+    <form class="ml-4" action="/usuarios" method="POST">
+        <h2 class="text-dark">Ingresá un usuario y contraseña</h2>
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="usuario">Usuario</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" required placeholder="Ej: lulu123">
+            </div>
+
+        </div>
+
+        <div> {{#if yaExisteUsuario}}
+            <p class="text-danger" > Usuario ya registrado. </p>
+        {{/if}} </div>
+
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="usuarioContrasenia">Contraseña</label>
+                <input type="password" class="form-control" id="usuarioContrasenia" required name="usuarioContrasenia">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="rusuarioContrasenia">Reingresá la contraseña</label>
+                <input type="password" class="form-control" id="rusuarioContrasenia" required  name="rusuarioContrasenia">
+            </div>
+        </div>
+
+
+        <p  {{#if errorContraseña}} class="mt-2 text-danger" {{else}} class="mt-2 text-secondary"  {{/if}}> La contraseña debe contener al menos una minúscula,
+        una mayúscula, un número y un caracter especial</p>
+
+        <hr class="hr-bold">
+
+        <h2 class="mt-2 text-dark">Ingresá tus datos personales</h2>
+
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="usuarioNombre">Nombre y apellido</label>
+                <input type="text" class="form-control" required id="usuarioNombre" name="usuarioNombre">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="usuarioNacimiento">Fecha de nacimiento</label>
+                <input type="date" class="form-control" required id="usuarioNacimiento" name="usuarioNacimiento">
+            </div>
+        </div>
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="usuarioTipoIdentificacion">Tipo</label>
+                <div>
+                    <select id="usuarioTipoIdentificacion" name="usuarioTipoIdentificacion">
+                        <option value="0">DNI</option>
+                        <option value="1">LC</option>
+                        <option value="2">LE</option>
+                        <option value="3">CI</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="usuarioNroIdentificacion">Nº de identificación, sin puntos ni comas.</label>
+                <input type="number" class="form-control" required id="usuarioNroIdentificacion" name="usuarioNroIdentificacion" placeholder="Ej: 37996640">
+            </div>
+        </div>
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="usuarioDireccion">Dirección</label>
+                <input type="text" class="form-control" required id="usuarioDireccion" name="usuarioDireccion">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="usuarioTelefono">Teléfono</label>
+                <input type="number" class="form-control"  id="usuarioTelefono" name="usuarioTelefono">
+            </div>
+        </div>
+
+        <div class="form-row mt-4" >
+            <div class="form-group col-md-2">
+                <label for="usuarioEmail">Email</label>
+                <input type="email" class="form-control" id="usuarioEmail" name="usuarioEmail">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark mb-4">Crear cuenta</button>
+    </form>
+{{/partial}}
+
+{{> layout.html.hbs }}
